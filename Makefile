@@ -8,7 +8,6 @@ CXXFLAGS=-Wall -Werror -Wextra -pedantic -std=c++14
 LDFLAGS=
 LDLIBS=
 
-SRC=src/geometric_spanner.cpp src/main.cpp
 OBJ=src/geometric_spanner.o src/main.o
 EXEC=spanner
 
