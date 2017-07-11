@@ -1,0 +1,181 @@
+graph geometric_spanner_greedy_spanner {
+outputorder=edgesfirst;
+node[fontsize=8, style=filled, margin="0.05,0.03"];
+Ackley [pos="212.758,-465.261!"];
+Ackworth [pos="206.835,-467.364!"];
+Adair [pos="207.501,-473.215!"];
+Adel [pos="208.072,-470.087!"];
+Afton [pos="205.137,-470.99!"];
+Agency [pos="204.975,-461.534!"];
+Ainsworth [pos="206.445,-457.762!"];
+Akron [pos="214.144,-482.797!"];
+Albert_City [pos="213.91,-474.743!"];
+Albia [pos="205.133,-464.029!"];
+Albion [pos="210.562,-464.943!"];
+Alburnett [pos="210.742,-458.093!"];
+Alden [pos="212.601,-466.88!"];
+Alexander [pos="214.029,-467.383!"];
+Algona [pos="215.35,-471.165!"];
+Alleman [pos="209.1,-468.058!"];
+Allerton [pos="203.532,-466.826!"];
+Allison [pos="213.764,-463.976!"];
+Alta [pos="213.368,-476.453!"];
+Alta_Vista [pos="215.993,-462.086!"];
+Alton [pos="214.937,-480.053!"];
+Altoona [pos="208.221,-467.323!"];
+Alvord [pos="216.711,-481.506!"];
+Amana [pos="209,-459.354!"];
+Ames [pos="210.174,-468.1!"];
+Anamosa [pos="210.542,-456.426!"];
+Anderson [pos="204.007,-478.021!"];
+Andover [pos="209.896,-451.259!"];
+Andrew [pos="210.768,-452.962!"];
+Anita [pos="207.226,-473.824!"];
+Ankeny [pos="208.649,-468.029!"];
+Anthon [pos="211.942,-479.333!"];
+Aplington [pos="212.921,-464.422!"];
+Arcadia [pos="210.436,-475.231!"];
+Archer [pos="215.576,-478.729!"];
+Aredale [pos="214.165,-465.027!"];
+Arion [pos="209.746,-477.318!"];
+Arispe [pos="204.747,-471.096!"];
+Arlington [pos="213.746,-458.356!"];
+Armstrong [pos="216.98,-472.392!"];
+Arnolds_Park [pos="216.864,-475.619!"];
+Arthur [pos="211.674,-476.738!"];
+Asbury [pos="212.572,-453.758!"];
+Ashton [pos="216.557,-478.956!"];
+Aspinwall [pos="209.56,-475.678!"];
+Atalissa [pos="207.856,-455.83!"];
+Athelstan [pos="202.861,-472.711!"];
+Atkins [pos="209.985,-459.311!"];
+Atlantic [pos="207.018,-475.069!"];
+Auburn [pos="211.257,-474.389!"];
+Afton -- Arispe
+Alleman -- Ankeny
+Adair -- Anita
+Altoona -- Ankeny
+Ackley -- Aplington
+Allison -- Aplington
+Arcadia -- Aspinwall
+Amana -- Atkins
+Archer -- Ashton
+Alleman -- Ames
+Allison -- Aredale
+Arcadia -- Auburn
+Anita -- Atlantic
+Aplington -- Aredale
+Ackworth -- Altoona
+Ackley -- Aredale
+Alburnett -- Atkins
+Alton -- Archer
+Alden -- Alexander
+Ackley -- Alden
+Arion -- Aspinwall
+Alburnett -- Anamosa
+Alta -- Arthur
+Albert_City -- Alta
+Andover -- Andrew
+Arcadia -- Arthur
+Alton -- Ashton
+Andrew -- Asbury
+Arion -- Arthur
+Algona -- Armstrong
+Adel -- Ankeny
+Ackley -- Albion
+Alton -- Alvord
+Alexander -- Aredale
+Arthur -- Aspinwall
+Arthur -- Auburn
+Ainsworth -- Atalissa
+Albion -- Aplington
+Alden -- Aredale
+Ackley -- Alexander
+Arispe -- Athelstan
+Agency -- Albia
+Alvord -- Ashton
+Anthon -- Arthur
+Aspinwall -- Atlantic
+Albert_City -- Auburn
+Alden -- Ames
+Anamosa -- Atalissa
+Albion -- Alden
+Akron -- Alton
+Akron -- Alvord
+Adel -- Ames
+Allison -- Alta_Vista
+Alta -- Auburn
+Anita -- Aspinwall
+Anthon -- Arion
+Ackworth -- Adel
+Ainsworth -- Amana
+Alburnett -- Arlington
+Adel -- Afton
+Alton -- Anthon
+Albert_City -- Arnolds_Park
+Alta -- Archer
+Adair -- Adel
+Albion -- Ames
+Alta -- Anthon
+Albia -- Allerton
+Armstrong -- Arnolds_Park
+Adair -- Afton
+Amana -- Anamosa
+Albion -- Altoona
+Ackworth -- Allerton
+Arnolds_Park -- Ashton
+Anamosa -- Asbury
+Archer -- Arnolds_Park
+Albion -- Alleman
+Anamosa -- Andrew
+Arion -- Atlantic
+Adair -- Arcadia
+Alta -- Arnolds_Park
+Alburnett -- Atalissa
+Anthon -- Archer
+Amana -- Atalissa
+Anamosa -- Arlington
+Ackworth -- Albia
+Albert_City -- Algona
+Albert_City -- Armstrong
+Adair -- Auburn
+Ackworth -- Afton
+Alexander -- Algona
+Agency -- Ainsworth
+Andrew -- Atalissa
+Akron -- Anthon
+Anderson -- Atlantic
+Ainsworth -- Alburnett
+Alta_Vista -- Arlington
+Allerton -- Arispe
+Anita -- Athelstan
+Arispe -- Atlantic
+Agency -- Amana
+Alton -- Arthur
+Arlington -- Asbury
+Athelstan -- Atlantic
+Albert_City -- Ashton
+Algona -- Auburn
+Adel -- Auburn
+Anderson -- Athelstan
+Albia -- Albion
+Allison -- Arlington
+Albion -- Atkins
+Anderson -- Arion
+Aplington -- Atkins
+Algona -- Ames
+Ames -- Auburn
+Agency -- Albion
+Alburnett -- Allison
+Alta_Vista -- Atkins
+Albion -- Arlington
+Adel -- Algona
+Alexander -- Auburn
+Alleman -- Aspinwall
+Altoona -- Amana
+Albert_City -- Alleman
+Ackworth -- Atkins
+Alden -- Aspinwall
+Albia -- Arlington
+Alta_Vista -- Armstrong
+}
