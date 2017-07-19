@@ -1,13 +1,13 @@
 #include <time.h>
 
-ScopedTimer::ScopedTimer(double& e_time, clockid_t clock = CLOCK_REALTIME)
+inline ScopedTimer::ScopedTimer(double& e_time, clockid_t clock = CLOCK_REALTIME)
   : _elapsed(e_time), _clock(clock)
 {
   clock_gettime(CLOCK_REALTIME, &_init);
 }
 
 
-    ScopedTimer::~ScopedTimer()
+inline ScopedTimer::~ScopedTimer()
 {
   timespec now;
   clock_gettime(_clock, &now);

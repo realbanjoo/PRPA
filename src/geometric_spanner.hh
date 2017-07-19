@@ -10,9 +10,9 @@
 class Geometric_Spanner
 {
   private :
-    bool t_path_exist(std::vector<Edge> span_edges, Edge e,
+    bool S_t_path_exist(const std::vector<Edge> span_edges, Edge e,
         const long double t);
-    bool OPT_t_path_exist(std::vector<Edge> span_edges, Edge e,
+    bool P_t_path_exist(const std::vector<Edge> span_edges, Edge e,
         const long double t);
   public :
     std::vector<Node*> points;
@@ -21,8 +21,8 @@ class Geometric_Spanner
     Geometric_Spanner (std::vector<Node*> points);
     Geometric_Spanner (std::string file, unsigned length);
     ~Geometric_Spanner();
-    void greedy_Spanner (const long double t);
-    void OPT_greedy_Spanner (const long double t);
+    void S_greedy_Spanner (const long double t);
+    void P_greedy_Spanner (const long double t);
     void export_As_Dot(std::string file);
     void export_As_Dot();
     void clear();

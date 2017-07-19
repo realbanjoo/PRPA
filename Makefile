@@ -3,10 +3,10 @@
 
 #Compilers and libs
 CPPFLAGS=
-CXX=clang++ -pthread
-CXXFLAGS=-Wall -Werror -Wextra -pedantic -std=c++14
+CXX=g++ -pthread
+CXXFLAGS= -Wall -Werror -Wextra -pedantic -std=c++14 -Itbb2017_20170604oss/include
 LDFLAGS=
-LDLIBS=
+LDLIBS= -lrt -ltbb
 
 OBJ=src/geometric_spanner.o src/main.o
 EXEC=spanner
@@ -20,9 +20,9 @@ release:	CXXFLAGS += -O3
 release: $(EXEC)
 
 $(EXEC): $(OBJ)
-	$(CXX) $(LDFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $^
 
 clean:
-	@rm -f $(OBJ) $(EXEC)
+	@rm -f $(OBJ) $(EXEC) src/*.gch
 
 .PHONY: all clean debug release
