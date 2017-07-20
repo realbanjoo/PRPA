@@ -59,10 +59,32 @@ int main(int argc, char *argv[])
       g.S_theta_graph(cones);
     }
     std::vector<Edge> res = g.span;
-    std::cout << "Serial theta:" << std::endl
+    std::cout << "Serial theta2:" << std::endl
       << " found " << res.size() << " edges \tin "
       << p << " ms." <<  std::endl;
-
+    g.export_As_Dot("outputs/theta_2.png");
+    g.clear();
+    cones = 4; 
+    {
+      ScopedTimer st(p);
+      g.S_theta_graph(cones);
+    }
+    res = g.span;
+    std::cout << "Serial theta4:" << std::endl
+      << " found " << res.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
+    g.export_As_Dot("outputs/theta_4.png");
+    g.clear();
+    cones = 8; 
+    {
+      ScopedTimer st(p);
+      g.S_theta_graph(cones);
+    }
+    res = g.span;
+    std::cout << "Serial theta8:" << std::endl
+      << " found " << res.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
+    g.export_As_Dot("outputs/theta_8.png");
     return 0;
   }
   if (vm.count("parallel") || !vm.count("serial"))

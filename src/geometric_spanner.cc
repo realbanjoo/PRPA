@@ -292,7 +292,9 @@ void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
         std::map<Node*, long double> dist;
         Ray bis = bisector(init, next);
         for (Node* t : cone)
+        {
           dist[t] = bis.dist_to(t);
+        }
         Node* min = (*min_element(dist.begin(), dist.end(), &Geometric_Spanner::compare)).first;
         
         /* Check if not already in span */

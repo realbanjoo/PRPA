@@ -4,10 +4,13 @@
 
 long double Ray::dist_to(Node* n)
 {
-  Vect2 pt((n->x - origin->x), (n->y - origin->y));
-  auto v2_ls = dir.len_squared();
-  Vect2 proj = dir * (pt.dot(dir) / v2_ls);
-  return sqrt(pow(2, proj.x) + pow(2, proj.y));
+  Vect2 v2 = dir;
+  Vect2 v1((n->x - origin->x), (n->y - origin->y));
+
+  auto v2_ls = v2.len_squared();
+  Vect2 proj = v2 * (v2.dot(v1) / v2_ls);
+
+  return sqrt(pow(proj.x, 2) + pow(proj.y, 2));
   
 }
 
