@@ -9,13 +9,13 @@
 
 namespace opt = boost::program_options;
 
-
 int main(int argc, char *argv[])
 {
   opt::variables_map vm;
   opt::options_description desc("Usage: spanner [OPTIONS] \nThe options are");
   desc.add_options()
     ("help,h", "Give this help list")
+    ("output,o", opt::value<std::string>(), "Output file")
     ("file,f", opt::value<std::string>()->default_value("inputs/input.csv"),
      "Input file")
     ("count,c", opt::value<unsigned>()->default_value(60),
@@ -68,6 +68,10 @@ int main(int argc, char *argv[])
       std::cout << "Parallel theta " << cones << " :" << std::endl
         << " found " << res.size() << " edges \tin "
         << p << " ms." <<  std::endl <<  std::endl;
+      if (vm.count("output"))
+        g.export_As_Dot(vm["output"].as<std::string>());
+      else
+        g.export_As_Dot();
       g.clear();
     }
     if (!vm.count("parallel") || vm.count("serial"))
@@ -81,6 +85,10 @@ int main(int argc, char *argv[])
       std::cout << "Serial theta " << cones << " :" << std::endl
         << " found " << res.size() << " edges \tin "
         << s << " ms." <<  std::endl <<  std::endl;
+      if (vm.count("output"))
+        g.export_As_Dot(vm["output"].as<std::string>());
+      else
+        g.export_As_Dot();
       g.clear();
     }
   }
@@ -97,6 +105,11 @@ int main(int argc, char *argv[])
       std::cout << "Parallel Greedy " << t << " :" << std::endl
         << " found " << res.size() << " edges \tin "
         << p << " ms." <<  std::endl <<  std::endl;
+      if (vm.count("output"))
+        g.export_As_Dot(vm["output"].as<std::string>());
+      else
+        g.export_As_Dot();
+      g.clear();
     }
     if (!vm.count("parallel") || vm.count("serial"))
     {
@@ -109,6 +122,11 @@ int main(int argc, char *argv[])
       std::cout << "Serial Greedy " << t << " :" << std::endl
         << " found " << res.size() << " edges \tin "
         << s << " ms." <<  std::endl <<  std::endl;
+      if (vm.count("output"))
+        g.export_As_Dot(vm["output"].as<std::string>());
+      else
+        g.export_As_Dot();
+      g.clear();
     }
   }
   return 0;
