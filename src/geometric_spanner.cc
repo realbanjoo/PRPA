@@ -11,6 +11,7 @@
 #include <tbb/tbb.h>
 
 #include "geometric_spanner.hh"
+#include "ray.hh"
 
 Geometric_Spanner::Geometric_Spanner (std::vector<Node*> points) 
   : points(points)
@@ -62,7 +63,7 @@ void Geometric_Spanner::clear()
 }
 
 
-
+/* GREEDY SPANNER */
 /* SERIAL */
 
 bool Geometric_Spanner::S_t_path_exist(const std::vector<Edge> span_edges, Edge e,
@@ -145,8 +146,6 @@ void Geometric_Spanner::S_greedy_Spanner (const long double t)
      */
   return;
 }
-
-
 
 /* PARALLEL */
 
@@ -252,6 +251,35 @@ void Geometric_Spanner::P_greedy_Spanner (const long double t)
      */
   return;
 }
+
+
+/* THEATA GRAPH */
+/* SERIAL */
+
+
+std::vector<Node*> Geometric_Spanner::compute_cone(unsigned nb_cones, Ray init)
+{
+  Ray right = init;
+  right.rotate_once(nb_cones);
+  std::vector<Node*> nodes;
+  for (auto p : points)
+    if (belongs_to(p, init, right))
+      nodes.push_back(p);
+  return nodes;
+}
+
+std::vector<std::vector<Node*>> Geometric_Spanner::compute_cones_for(unsigned nb_cones,
+    Ray init)
+{
+  std::vector<std::vector<Node*>> res;
+  for (unsigned i = 0; i < nb_cones; i++)
+  {
+    res.push_back(compute_cone(nb_cones, init));
+    init.rotate_once(nb_cones);
+  }
+  return res;
+}
+
 
 
 
