@@ -265,7 +265,7 @@ std::vector<Node*> Geometric_Spanner::compute_cone(unsigned nb_cones, Ray init)
   right.rotate_once(nb_cones);
   std::vector<Node*> nodes;
   for (auto p : points)
-    if (belongs_to(p, init, right))
+    if (p != init.origin && belongs_to(p, init, right))
       nodes.push_back(p);
   return nodes;
 }
@@ -285,15 +285,24 @@ void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
     {
       std::vector<Node*> cone = compute_cone(nb_cones,
         init);
-      std::map<Node*, long double> dist;
       Ray next = init;
       next.rotate_once(nb_cones);
-      Ray bis = bisector(init, next);
-      for (Node* t : points)
-        dist[t] = bis.dist_to(t);
-      Node* min = (*min_element(dist.begin(), dist.end(), &Geometric_Spanner::compare)).first;
-      /* FIXME CHECK IF NOT ALREADY IN SPAN */
-      span.emplace_back(n, min);
+      if (cone.size())
+      {
+        std::map<Node*, long double> dist;
+        Ray bis = bisector(init, next);
+        for (Node* t : cone)
+          dist[t] = bis.dist_to(t);
+        Node* min = (*min_element(dist.begin(), dist.end(), &Geometric_Spanner::compare)).first;
+        
+        /* Check if not already in span */
+        Edge e1(n, min);
+        Edge e2(min, n);
+        if (std::find(span.begin(), span.end(), e1) == span.end()
+            && std::find(span.begin(), span.end(), e2) == span.end())
+          span.emplace_back(n, min);
+
+      }
       init = next;
     }
   }

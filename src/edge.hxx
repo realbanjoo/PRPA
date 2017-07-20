@@ -13,6 +13,11 @@ inline bool Edge::operator < (const Edge& e) const
   return weight < e.weight;
 }
 
+inline bool Edge::operator == (const Edge& e) const
+{
+  return from == e.from && to == e.to && weight == e.weight;
+}
+
 inline std::ostream& operator<<(std::ostream& o, Edge e)
 {
   return o << "E{" << *e.from << ", " << *e.to << ", " << e.weight << "}";

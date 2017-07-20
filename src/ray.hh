@@ -12,7 +12,7 @@ class Ray
     Ray(Node* ori, Vect2 dir);
     Ray(Node* ori, long double x, long double y);
 
-    long double dist_to(Node* n) const;
+    long double dist_to(Node* n);
 
     void rotate_once(unsigned nb_cones);
 };
