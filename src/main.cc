@@ -58,6 +58,7 @@ int main (int argc, char* argv[])
   std::cout << "Serial:" << std::endl
     << " found " << res1.size() << " edges \tin "
     << s << " ms." <<  std::endl;
+  g.export_As_Dot("s_bloupi.dot");
 
   g.clear();
 
@@ -70,7 +71,9 @@ int main (int argc, char* argv[])
   std::cout << "parallel:" << std::endl 
     << " found " << res2.size() << " edges \tin "
     << p << " ms." <<  std::endl;
-    */
+  g.export_As_Dot("p_bloupi.dot");
+  */
+
     return 0;
 }
 

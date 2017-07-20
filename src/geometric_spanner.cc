@@ -107,7 +107,8 @@ bool Geometric_Spanner::S_t_path_exist(const std::vector<Edge> span_edges, Edge 
       }
     }
     /* Sort to keep the priority of short distances */
-    std::sort(p.begin(), p.end());
+    std::sort(p.begin(), p.end(),
+      [&](Node* i, Node* j){ return dist[i] > dist[j]; });
   }
   return false;
 }
@@ -201,7 +202,8 @@ bool Geometric_Spanner::P_t_path_exist(const std::vector<Edge> span_edges, Edge 
     tbb::parallel_for_each(span_edges.begin(), span_edges.end(), work);
 
     /* Sort to keep the priority of short distances */
-    std::sort(p.begin(), p.end());
+    std::sort(p.begin(), p.end(),
+      [&](Node* i, Node* j){ return dist[i] > dist[j]; });
   }
   return false;
 }
