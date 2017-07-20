@@ -19,7 +19,7 @@ class Ray
 
 bool belongs_to(Node* n, Ray left, Ray right);
 
-Ray bisector(Ray r1, Ray r2);
+Ray bisector(Ray& r1, Ray& r2);
 
 #include "ray.hxx"
 

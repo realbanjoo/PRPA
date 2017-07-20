@@ -270,18 +270,34 @@ std::vector<Node*> Geometric_Spanner::compute_cone(unsigned nb_cones, Ray init)
   return nodes;
 }
 
-std::vector<std::vector<Node*>> Geometric_Spanner::compute_cones_for(unsigned nb_cones,
-    Ray init)
+bool Geometric_Spanner::compare(std::pair<Node*, long double> i,
+std::pair<Node*, long double> j)
 {
-  std::vector<std::vector<Node*>> res;
-  for (unsigned i = 0; i < nb_cones; i++)
-  {
-    res.push_back(compute_cone(nb_cones, init));
-    init.rotate_once(nb_cones);
-  }
-  return res;
+  return i.second < j.second;
 }
 
+void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
+{
+  for (Node* n : points)
+  {
+    Ray init(n, 0, 1);
+    for (unsigned i = 0; i < nb_cones; i++)
+    {
+      std::vector<Node*> cone = compute_cone(nb_cones,
+        init);
+      std::map<Node*, long double> dist;
+      Ray next = init;
+      next.rotate_once(nb_cones);
+      Ray bis = bisector(init, next);
+      for (Node* t : points)
+        dist[t] = bis.dist_to(t);
+      Node* min = (*min_element(dist.begin(), dist.end(), &Geometric_Spanner::compare)).first;
+      /* FIXME CHECK IF NOT ALREADY IN SPAN */
+      span.emplace_back(n, min);
+      init = next;
+    }
+  }
+}
 
 
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <utility>
 #include <vector>
 
 #include "edge.hh"
@@ -30,6 +31,10 @@ class Geometric_Spanner
     void S_greedy_Spanner (const long double t);
     void P_greedy_Spanner (const long double t);
 
+
+    static bool compare(std::pair<Node*, long double> i,
+        std::pair<Node*, long double> j);
+    void S_theta_graph(unsigned nb_cones);
 
 
     void export_As_Dot(std::string file);
