@@ -6,7 +6,7 @@ CPPFLAGS=
 CXX=g++ -pthread
 CXXFLAGS= -Wall -Werror -Wextra -pedantic -std=c++14
 LDFLAGS=
-LDLIBS= -lrt -ltbb
+LDLIBS= -lrt -ltbb -lboost_program_options
 
 OBJ=src/geometric_spanner.o src/main.o src/ray.o
 EXEC=spanner

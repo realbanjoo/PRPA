@@ -1,4 +1,5 @@
 /** main.cc **/
+#include <boost/program_options.hpp>
 #include <iostream>
 #include <vector>
 
@@ -6,74 +7,71 @@
 #include "scoped_timer.hh"
 
 
-int main (int argc, char* argv[])
+namespace opt = boost::program_options;
+
+
+int main(int argc, char *argv[])
 {
+  opt::variables_map vm;
+  opt::options_description desc("Usage: spanner [OPTIONS] \nThe options are");
+  desc.add_options()
+    ("help,h", "Give this help list")
+    ("count,c", opt::value<unsigned>()->default_value(50),
+     "Number of points to take into account (default 50)")
+    ("file,f", opt::value<std::string>()->default_value("inputs/input.csv"),
+     "Input file (default is inputs/input.csv")
+    ("parallel,p", "Whether to run in parallel or not")
+    ("serial,s", "Whether to run in serial or not")
+    ("elasticity,e", opt::value<double>()->default_value(2),
+     "Elasticity (default is 2)")
+    ;
+  try
+  {
+    opt::store(opt::parse_command_line(argc, argv, desc), vm);
+    opt::notify(vm);
+    if (vm.count("help"))
+    {
+      std::cout << desc << '\n';
+      return 0;
+    }
+  }
+  catch (opt::error& e)
+  {
+    std::cerr << e.what() << std::endl
+              << desc << std::endl;
+    return 1;
+  }
   // Parse parameter of program ( input file, then number max of towns)
-  std::string path;
-  unsigned count;
-  if (argc < 3)
-  {
-    count = 50;
-    if (argc < 2)
-      path = "inputs/input.csv";
-    else
-      path = argv[1];
-  }
-  else 
-  {
-    path = argv[1];
-    count = stoi(std::string(argv[2]));
-  }
-  std::cout << count << std::endl;
+  std::string path = vm["file"].as<std::string>();
+  unsigned count = vm["count"].as<unsigned>();
+  double t = vm["elasticity"].as<double>();
 
-
-  Node* n1 = new Node("n1", 0, 0);
-  Node* n2 = new Node("n2", 7, 7);
-
-  Ray r1(n1, 1, 0);
-  Ray r2(n1, 0, 1);
-
-  std::cout << "r1.dir.x: " << r1.dir.x << std::endl
-    << "r1.dir.y: " << r1.dir.y << std::endl;
-
-  Ray b = bisector(r1, r2);
-  std::cout << "b.dir.x: " << b.dir.x << std::endl
-    << "b.dir.y: " << b.dir.y << std::endl;
-
-  r1.rotate_once(8);
-  std::cout << "r1.dir.x: " << r1.dir.x << std::endl
-    << "r1.dir.y: " << r1.dir.y << std::endl;
-
-  std::cout << belongs_to(n2, r1, r2) << std::endl;
-
-   /*
   Geometric_Spanner g(path, count);
-  long t = 2;
-  double s;
+  if (vm.count("parallel") || !vm.count("serial"))
   {
-    ScopedTimer st(s);
-    g.S_greedy_Spanner(t);
+    double p;
+    {
+      ScopedTimer st(p);
+      g.P_greedy_Spanner(t);
+    }
+    std::vector<Edge> res2 = g.span;
+    std::cout << "Parallel:" << std::endl
+      << " found " << res2.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
   }
-  std::vector<Edge> res1 = g.span;
-  std::cout << "Serial:" << std::endl
-    << " found " << res1.size() << " edges \tin "
-    << s << " ms." <<  std::endl;
-  g.export_As_Dot("s_bloupi.dot");
-
   g.clear();
-
-  double p;
+  if (!vm.count("parallel") || vm.count("serial"))
   {
-    ScopedTimer st(p);
-    g.P_greedy_Spanner(t);
+    double s;
+    {
+      ScopedTimer st(s);
+      g.S_greedy_Spanner(t);
+    }
+    std::vector<Edge> res1 = g.span;
+    std::cout << "Serial:" << std::endl
+      << " found " << res1.size() << " edges \tin "
+      << s << " ms." <<  std::endl;
   }
-  std::vector<Edge> res2 = g.span;
-  std::cout << "parallel:" << std::endl 
-    << " found " << res2.size() << " edges \tin "
-    << p << " ms." <<  std::endl;
-  g.export_As_Dot("p_bloupi.dot");
-  */
-
     return 0;
 }
 
