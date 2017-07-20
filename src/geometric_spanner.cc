@@ -7,6 +7,7 @@
 /* Parallel */
 #include <functional>
 #include <iterator>
+#include <mutex>
 #include <tbb/tbb.h>
 
 #include "geometric_spanner.hh"
@@ -154,7 +155,8 @@ bool Geometric_Spanner::P_t_path_exist(const std::vector<Edge> span_edges, Edge 
 {
   // Use Dijkstra algorithm
   std::vector<Node*> p;
-  std::map<Node*, long double> dist;
+  std::mutex p_mutex;
+  tbb::concurrent_unordered_map<Node*, long double> dist;
   dist[e.from] = 0;
   p.push_back(e.from);
 
@@ -170,6 +172,9 @@ bool Geometric_Spanner::P_t_path_exist(const std::vector<Edge> span_edges, Edge 
       return true;
     /* Neighbours discovery */
 
+    /* WORKS ONLY IF NO DOUBLE EDGES EXIST (if there are, two different
+     * discoveries could modify the dist value, and nothing guarantes that the
+     * last one will be the smaller).  */
     auto work = [&] (const Edge &ed) {
       if (ed.from == n)
       {
@@ -177,15 +182,17 @@ bool Geometric_Spanner::P_t_path_exist(const std::vector<Edge> span_edges, Edge 
             || dist[ed.to] > ed.weight + dist[n])
         {
           dist[ed.to] = dist[n] + ed.weight;
+          std::lock_guard<std::mutex> guard(p_mutex);
           p.push_back(ed.to);
         }
       }
-      if (ed.to == n)
+      else if (ed.to == n)
       {
         if (dist.find(ed.from) == dist.end()
             || dist[ed.from] > ed.weight + dist[n])
         {
           dist[ed.from] = dist[n] + ed.weight;
+          std::lock_guard<std::mutex> guard(p_mutex);
           p.push_back(ed.from);
         }
       }
@@ -202,25 +209,15 @@ bool Geometric_Spanner::P_t_path_exist(const std::vector<Edge> span_edges, Edge 
 
 void Geometric_Spanner::P_greedy_Spanner (const long double t)
 {
-  std::vector<Edge> all_edges;
+  tbb::concurrent_vector<Edge> p_all_edges;
   span.clear();
+  
   // Computes all possible edges of the complete graph
-  for (auto i = points.begin(); i < points.end(); i++)
-  {
-    for (auto j = i + 1; j < points.end(); j++)
-    {
-      all_edges.emplace_back(*i, *j);
-    }
-  }
-
-  std::cout << all_edges.size() << std::endl;
-  all_edges.clear();
-
   const auto i_terator = [&] (tbb::blocked_range<std::vector<Node*>::iterator> &r) {
     for (auto i = r.begin(); i < r.end(); i++)
     {
       const auto j_terator = [&] (Node* &j) {
-        all_edges.emplace_back(*i, j);
+        p_all_edges.emplace_back(*i, j);
       };
       tbb::parallel_for_each(std::next(i, 1), points.end(), j_terator);
     }
@@ -230,21 +227,20 @@ void Geometric_Spanner::P_greedy_Spanner (const long double t)
       tbb::blocked_range<std::vector<Node*>::iterator>
       (points.begin(), points.end()), i_terator);
 
-  std::cout << all_edges.size() << std::endl << t;
   // Sort them by shortest distance
-  std::sort(all_edges.begin(), all_edges.end());
+  std::sort(p_all_edges.begin(), p_all_edges.end());
   
   // Add edge e iff no t-path exist between the two nodes of e
   // unsigned max = all_edges.size();
-  /*
-  for (Edge& e : all_edges)
+  
+  for (Edge& e : p_all_edges)
   {
-    if (!S_t_path_exist(span, e, t))
+    if (!P_t_path_exist(span, e, t))
     {
       span.push_back(e);
     } 
   }
-  */
+  
   // Debug Print
   /*
      std::cout << "all edges:" << std::endl;

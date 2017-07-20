@@ -4,7 +4,7 @@
 #Compilers and libs
 CPPFLAGS=
 CXX=g++ -pthread
-CXXFLAGS= -Wall -Werror -Wextra -pedantic -std=c++14 -Itbb2017_20170604oss/include
+CXXFLAGS= -Wall -Werror -Wextra -pedantic -std=c++14
 LDFLAGS=
 LDLIBS= -lrt -ltbb
 
