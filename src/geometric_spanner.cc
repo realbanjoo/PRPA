@@ -280,7 +280,7 @@ void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
 {
   for (Node* n : points)
   {
-    Ray init(n, 0, 1);
+    Ray init(n, 1, 0);
     for (unsigned i = 0; i < nb_cones; i++)
     {
       std::vector<Node*> cone = compute_cone(nb_cones,

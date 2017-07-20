@@ -64,6 +64,17 @@ int main(int argc, char *argv[])
       << p << " ms." <<  std::endl;
     g.export_As_Dot("outputs/theta_2.dot");
     g.clear();
+    cones = 3; 
+    {
+      ScopedTimer st(p);
+      g.S_theta_graph(cones);
+    }
+    res = g.span;
+    std::cout << "Serial theta3:" << std::endl
+      << " found " << res.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
+    g.export_As_Dot("outputs/theta_3.dot");
+    g.clear();
     cones = 4; 
     {
       ScopedTimer st(p);
@@ -85,6 +96,17 @@ int main(int argc, char *argv[])
       << " found " << res.size() << " edges \tin "
       << p << " ms." <<  std::endl;
     g.export_As_Dot("outputs/theta_8.dot");
+    g.clear();
+    cones = 12; 
+    {
+      ScopedTimer st(p);
+      g.S_theta_graph(cones);
+    }
+    res = g.span;
+    std::cout << "Serial theta12:" << std::endl
+      << " found " << res.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
+    g.export_As_Dot("outputs/theta_12.dot");
     return 0;
   }
   if (vm.count("parallel") || !vm.count("serial"))
