@@ -24,8 +24,29 @@ int main (int argc, char* argv[])
     path = argv[1];
     count = stoi(std::string(argv[2]));
   }
+  std::cout << count << std::endl;
 
 
+  Node* n1 = new Node("n1", 0, 0);
+  Node* n2 = new Node("n2", 7, 7);
+
+  Ray r1(n1, 1, 0);
+  Ray r2(n1, 0, 1);
+
+  std::cout << "r1.dir.x: " << r1.dir.x << std::endl
+    << "r1.dir.y: " << r1.dir.y << std::endl;
+
+  Ray b = bisector(r1, r2);
+  std::cout << "b.dir.x: " << b.dir.x << std::endl
+    << "b.dir.y: " << b.dir.y << std::endl;
+
+  r1.rotate_once(8);
+  std::cout << "r1.dir.x: " << r1.dir.x << std::endl
+    << "r1.dir.y: " << r1.dir.y << std::endl;
+
+  std::cout << belongs_to(n2, r1, r2) << std::endl;
+
+   /*
   Geometric_Spanner g(path, count);
   long t = 2;
   double s;
@@ -49,7 +70,7 @@ int main (int argc, char* argv[])
   std::cout << "parallel:" << std::endl 
     << " found " << res2.size() << " edges \tin "
     << p << " ms." <<  std::endl;
-
+    */
     return 0;
 }
 

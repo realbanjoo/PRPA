@@ -1,14 +1,16 @@
 #pragma once
 
 #include "node.hh"
+#include "vect2.hh"
 
 class Ray
 {
   public:
     Node* origin;
-    double angle;
+    Vect2 dir;
 
-    Ray(Node* ori, double angle);
+    Ray(Node* ori, Vect2 dir);
+    Ray(Node* ori, long double x, long double y);
 
     long double dist_to(Node* n) const;
 
