@@ -33,7 +33,8 @@ bool belongs_to(Node* n, Ray left, Ray right)
   Node* ori = left.origin;
   Ray r(ori, n->x - ori->x, n->y - ori->y);
 
-  return left.origin == right.origin 
+  return ori == right.origin
+    && ori != n
     && left.dir.cross(r.dir) * left.dir.cross(right.dir) >= 0
     && right.dir.cross(r.dir) * right.dir.cross(left.dir) >= 0;
 }

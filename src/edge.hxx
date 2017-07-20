@@ -15,7 +15,7 @@ inline bool Edge::operator < (const Edge& e) const
 
 inline bool Edge::operator == (const Edge& e) const
 {
-  return from == e.from && to == e.to && weight == e.weight;
+  return from == e.from && to == e.to;
 }
 
 inline std::ostream& operator<<(std::ostream& o, Edge e)

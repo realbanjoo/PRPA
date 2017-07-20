@@ -19,7 +19,7 @@ class Geometric_Spanner
         const long double t);
 
     std::vector<Node*> S_compute_cone(unsigned nb_cones, Ray init);
-        tbb::concurrent_vector<Node*> P_compute_cone(unsigned nb_cones, Ray init);
+    tbb::concurrent_vector<Node*> P_compute_cone(unsigned nb_cones, Ray init);
   public :
     std::vector<Node*> points;
     std::vector<Edge> span;
