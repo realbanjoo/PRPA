@@ -22,8 +22,11 @@ int main(int argc, char *argv[])
      "Input file (default is inputs/input.csv")
     ("parallel,p", "Whether to run in parallel or not")
     ("serial,s", "Whether to run in serial or not")
-    ("elasticity,e", opt::value<double>()->default_value(2),
-     "Elasticity (default is 2)")
+    ("elasticity,e", opt::value<double>()->default_value(1.5),
+     "Elasticity (default is 1.5)")
+    ("theta,t", "Launches theta graph")
+    ("cones,k", opt::value<unsigned>()->default_value(2),
+     "number of cones for the theta graph")
     ;
   try
   {
@@ -45,8 +48,23 @@ int main(int argc, char *argv[])
   std::string path = vm["file"].as<std::string>();
   unsigned count = vm["count"].as<unsigned>();
   double t = vm["elasticity"].as<double>();
+  unsigned cones = vm["cones"].as<unsigned>();
 
   Geometric_Spanner g(path, count);
+  if (vm.count("theta"))
+  {
+    double p;
+    {
+      ScopedTimer st(p);
+      g.S_theta_graph(cones);
+    }
+    std::vector<Edge> res = g.span;
+    std::cout << "Serial theta:" << std::endl
+      << " found " << res.size() << " edges \tin "
+      << p << " ms." <<  std::endl;
+
+    return 0;
+  }
   if (vm.count("parallel") || !vm.count("serial"))
   {
     double p;
