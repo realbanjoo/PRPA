@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     std::cout << "Serial theta2:" << std::endl
       << " found " << res.size() << " edges \tin "
       << p << " ms." <<  std::endl;
-    g.export_As_Dot("outputs/theta_2.png");
+    g.export_As_Dot("outputs/theta_2.dot");
     g.clear();
     cones = 4; 
     {
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     std::cout << "Serial theta4:" << std::endl
       << " found " << res.size() << " edges \tin "
       << p << " ms." <<  std::endl;
-    g.export_As_Dot("outputs/theta_4.png");
+    g.export_As_Dot("outputs/theta_4.dot");
     g.clear();
     cones = 8; 
     {
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
     std::cout << "Serial theta8:" << std::endl
       << " found " << res.size() << " edges \tin "
       << p << " ms." <<  std::endl;
-    g.export_As_Dot("outputs/theta_8.png");
+    g.export_As_Dot("outputs/theta_8.dot");
     return 0;
   }
   if (vm.count("parallel") || !vm.count("serial"))
