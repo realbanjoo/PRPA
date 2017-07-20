@@ -3,6 +3,7 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <tbb/tbb.h>
 
 #include "edge.hh"
 #include "node.hh"
@@ -17,9 +18,8 @@ class Geometric_Spanner
     bool P_t_path_exist(const std::vector<Edge> span_edges, Edge e,
         const long double t);
 
-    std::vector<Node*> compute_cone(unsigned nb_cones, Ray init);
-    std::vector<std::vector<Node*>> compute_cones_for(unsigned nb_cones,
-        Ray init);
+    std::vector<Node*> S_compute_cone(unsigned nb_cones, Ray init);
+        tbb::concurrent_vector<Node*> P_compute_cone(unsigned nb_cones, Ray init);
   public :
     std::vector<Node*> points;
     std::vector<Edge> span;
@@ -35,6 +35,7 @@ class Geometric_Spanner
     static bool compare(std::pair<Node*, long double> i,
         std::pair<Node*, long double> j);
     void S_theta_graph(unsigned nb_cones);
+    void P_theta_graph(unsigned nb_cones);
 
 
     void export_As_Dot(std::string file);

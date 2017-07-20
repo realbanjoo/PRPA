@@ -63,6 +63,8 @@ void Geometric_Spanner::clear()
 }
 
 
+
+
 /* GREEDY SPANNER */
 /* SERIAL */
 
@@ -242,24 +244,23 @@ void Geometric_Spanner::P_greedy_Spanner (const long double t)
     } 
   }
   
-  // Debug Print
-  /*
-     std::cout << "all edges:" << std::endl;
-     for (Edge e : all_edges)
-     std::cout << e << std::endl;
-     std::cout << "Span:" << std::endl;
-     for (Edge e : span)
-     std::cout << e << std::endl;
-     */
   return;
 }
 
 
+
+
 /* THEATA GRAPH */
+
+bool Geometric_Spanner::compare(std::pair<Node*, long double> i,
+std::pair<Node*, long double> j)
+{
+  return i.second < j.second;
+}
+
 /* SERIAL */
 
-
-std::vector<Node*> Geometric_Spanner::compute_cone(unsigned nb_cones, Ray init)
+std::vector<Node*> Geometric_Spanner::S_compute_cone(unsigned nb_cones, Ray init)
 {
   Ray right = init;
   right.rotate_once(nb_cones);
@@ -270,12 +271,6 @@ std::vector<Node*> Geometric_Spanner::compute_cone(unsigned nb_cones, Ray init)
   return nodes;
 }
 
-bool Geometric_Spanner::compare(std::pair<Node*, long double> i,
-std::pair<Node*, long double> j)
-{
-  return i.second < j.second;
-}
-
 void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
 {
   for (Node* n : points)
@@ -283,7 +278,7 @@ void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
     Ray init(n, 1, 0);
     for (unsigned i = 0; i < nb_cones; i++)
     {
-      std::vector<Node*> cone = compute_cone(nb_cones,
+      std::vector<Node*> cone = S_compute_cone(nb_cones,
         init);
       Ray next = init;
       next.rotate_once(nb_cones);
@@ -309,6 +304,62 @@ void Geometric_Spanner::S_theta_graph(unsigned nb_cones)
     }
   }
 }
+
+/* PARALLEL */
+
+tbb::concurrent_vector<Node*> Geometric_Spanner::P_compute_cone(unsigned nb_cones, Ray init)
+{
+  Ray right = init;
+  right.rotate_once(nb_cones);
+  tbb::concurrent_vector<Node*> nodes;
+  const auto node_terator = [&] (Node* &n) {
+    if (n != init.origin && belongs_to(n, init, right))
+      nodes.push_back(n);
+  };
+  tbb::parallel_for_each(points.begin(), points.end(), node_terator);
+  return nodes;
+}
+
+void Geometric_Spanner::P_theta_graph(unsigned nb_cones)
+{
+  std::mutex p_mutex;
+  const auto node_terator = [&] (Node* &n) {
+    Ray init(n, 1, 0);
+    std::cout << "current: " << n->name << std::endl;
+    for (unsigned i = 0; i < nb_cones; i++)
+    {
+      tbb::concurrent_vector<Node*> cone = P_compute_cone(nb_cones,
+        init);
+      Ray next = init;
+      next.rotate_once(nb_cones);
+      if (cone.size())
+      {
+        tbb::concurrent_unordered_map<Node*, long double> dist;
+        Ray bis = bisector(init, next);
+        const auto tnode_terator = [&] (Node* &t) {
+          dist[t] = bis.dist_to(t);
+        };
+        tbb::parallel_for_each(points.begin(), points.end(), tnode_terator);
+        Node* min = (*min_element(dist.begin(), dist.end(), &Geometric_Spanner::compare)).first;
+        
+        std::cout << "min = " << min->name << std::endl;
+        /* Check if not already in span */
+        Edge e1(n, min);
+        Edge e2(min, n);
+        {
+          std::lock_guard<std::mutex> guard(p_mutex);
+          if (std::find(span.begin(), span.end(), e1) == span.end()
+              && std::find(span.begin(), span.end(), e2) == span.end())
+            span.emplace_back(n, min);
+        }
+
+      }
+      init = next;
+    }
+  };
+  tbb::parallel_for_each(points.begin(), points.end(), node_terator);
+}
+
 
 
 
