@@ -1,0 +1,614 @@
+graph geometric_spanner_greedy_spanner {
+outputorder=edgesfirst;
+node[fontsize=8, style=filled, margin="0.05,0.03"];
+Ackley [pos="212.758,-465.261!"];
+Ackworth [pos="206.835,-467.364!"];
+Adair [pos="207.501,-473.215!"];
+Adel [pos="208.072,-470.087!"];
+Afton [pos="205.137,-470.99!"];
+Agency [pos="204.975,-461.534!"];
+Ainsworth [pos="206.445,-457.762!"];
+Akron [pos="214.144,-482.797!"];
+Albert_City [pos="213.91,-474.743!"];
+Albia [pos="205.133,-464.029!"];
+Albion [pos="210.562,-464.943!"];
+Alburnett [pos="210.742,-458.093!"];
+Alden [pos="212.601,-466.88!"];
+Alexander [pos="214.029,-467.383!"];
+Algona [pos="215.35,-471.165!"];
+Alleman [pos="209.1,-468.058!"];
+Allerton [pos="203.532,-466.826!"];
+Allison [pos="213.764,-463.976!"];
+Alta [pos="213.368,-476.453!"];
+Alta_Vista [pos="215.993,-462.086!"];
+Alton [pos="214.937,-480.053!"];
+Altoona [pos="208.221,-467.323!"];
+Alvord [pos="216.711,-481.506!"];
+Amana [pos="209,-459.354!"];
+Ames [pos="210.174,-468.1!"];
+Anamosa [pos="210.542,-456.426!"];
+Anderson [pos="204.007,-478.021!"];
+Andover [pos="209.896,-451.259!"];
+Andrew [pos="210.768,-452.962!"];
+Anita [pos="207.226,-473.823!"];
+Ankeny [pos="208.649,-468.029!"];
+Anthon [pos="211.942,-479.333!"];
+Aplington [pos="212.921,-464.422!"];
+Arcadia [pos="210.436,-475.231!"];
+Archer [pos="215.576,-478.729!"];
+Aredale [pos="214.165,-465.027!"];
+Arion [pos="209.746,-477.318!"];
+Arispe [pos="204.747,-471.096!"];
+Arlington [pos="213.746,-458.356!"];
+Armstrong [pos="216.98,-472.392!"];
+Arnolds_Park [pos="216.864,-475.619!"];
+Arthur [pos="211.674,-476.738!"];
+Asbury [pos="212.572,-453.758!"];
+Ashton [pos="216.557,-478.956!"];
+Aspinwall [pos="209.56,-475.678!"];
+Atalissa [pos="207.856,-455.83!"];
+Athelstan [pos="202.861,-472.711!"];
+Atkins [pos="209.985,-459.311!"];
+Atlantic [pos="207.018,-475.069!"];
+Auburn [pos="211.257,-474.389!"];
+Audubon [pos="208.59,-474.662!"];
+Aurelia [pos="213.564,-477.183!"];
+Aurora [pos="213.094,-458.643!"];
+Avoca [pos="207.383,-476.69!"];
+Ayrshire [pos="215.196,-474.164!"];
+Badger [pos="213.072,-470.73!"];
+Bagley [pos="209.231,-472.15!"];
+Baldwin [pos="210.371,-454.208!"];
+Balltown [pos="213.19,-454.344!"];
+Bancroft [pos="216.464,-471.09!"];
+Bankston [pos="212.593,-454.806!"];
+Barnes_City [pos="207.535,-462.348!"];
+Barnum [pos="212.543,-471.826!"];
+Bartlett [pos="204.425,-478.975!"];
+Bassett [pos="215.315,-462.577!"];
+Batavia [pos="204.971,-460.837!"];
+Battle_Creek [pos="211.578,-477.993!"];
+Baxter [pos="209.131,-465.758!"];
+Bayard [pos="209.26,-472.792!"];
+Beacon [pos="206.385,-463.398!"];
+Beaconsfield [pos="204.039,-470.253!"];
+Beaman [pos="211.099,-464.118!"];
+Beaver [pos="210.192,-470.711!"];
+Beaverdale [pos="204.234,-456.042!"];
+Bedford [pos="203.335,-473.607!"];
+Belle_Plaine [pos="209.485,-461.391!"];
+Bellevue [pos="211.293,-452.115!"];
+Belmond [pos="214.23,-468.071!"];
+Bennett [pos="208.701,-454.869!"];
+Bentley [pos="206.885,-478.101!"];
+Benton [pos="203.517,-471.791!"];
+Berkley [pos="209.725,-470.573!"];
+Bernard [pos="211.561,-454.159!"];
+Bertram [pos="209.749,-457.677!"];
+Bettendorf [pos="207.622,-452.578!"];
+Bevington [pos="206.8,-468.921!"];
+Birmingham [pos="204.395,-459.736!"];
+Blairsburg [pos="212.4,-468.215!"];
+Blairstown [pos="209.547,-460.422!"];
+Blakesburg [pos="204.811,-463.17!"];
+Blanchard [pos="202.896,-476.108!"];
+Blencoe [pos="209.651,-480.404!"];
+Blockton [pos="203.078,-472.386!"];
+Bloomfield [pos="203.758,-462.075!"];
+Blue_Grass [pos="207.548,-453.824!"];
+Bode [pos="214.341,-471.448!"];
+Bolan [pos="216.86,-465.597!"];
+Bonaparte [pos="203.49,-459.016!"];
+Bondurant [pos="208.503,-467.311!"];
+Boone [pos="210.299,-469.401!"];
+Bouton [pos="209.257,-470.046!"];
+Boxholm [pos="210.879,-470.53!"];
+Boyden [pos="215.955,-480.029!"];
+Braddyville [pos="202.894,-475.15!"];
+Bradford [pos="213.165,-466.225!"];
+Bradgate [pos="214.015,-472.09!"];
+Brandon [pos="211.572,-460.011!"];
+Brayton [pos="207.722,-474.621!"];
+Breda [pos="210.908,-474.885!"];
+Bridgewater [pos="206.225,-473.344!"];
+Brighton [pos="205.874,-459.098!"];
+Bristow [pos="213.869,-464.537!"];
+Britt [pos="215.489,-469.009!"];
+Bronson [pos="212.054,-481.07!"];
+Brooklyn [pos="208.668,-462.227!"];
+Brunsville [pos="214.049,-481.346!"];
+Buckeye [pos="212.086,-466.875!"];
+Buck_Grove [pos="209.59,-476.981!"];
+Buffalo [pos="207.282,-453.617!"];
+Buffalo_Center [pos="216.929,-469.733!"];
+Burchinal [pos="215.326,-466.391!"];
+Burlington [pos="204.038,-455.565!"];
+Burr_Oak [pos="217.294,-459.327!"];
+Burt [pos="215.987,-471.098!"];
+Bussey [pos="206.022,-464.413!"];
+Calamus [pos="209.129,-453.791!"];
+California_Junction [pos="207.793,-479.974!"];
+Callender [pos="211.81,-471.479!"];
+Calmar [pos="215.918,-459.32!"];
+Calumet [pos="214.732,-477.75!"];
+Camanche [pos="208.94,-451.281!"];
+Cambridge [pos="209.492,-467.646!"];
+Cantril [pos="203.221,-460.349!"];
+Carbon [pos="205.25,-474.117!"];
+Carlisle [pos="207.59,-467.426!"];
+Carpenter [pos="217.075,-465.075!"];
+Carroll [pos="210.329,-474.335!"];
+Carson [pos="206.183,-477.09!"];
+Carter_Lake [pos="206.453,-479.59!"];
+Cascade [pos="211.509,-455.023!"];
+Casey [pos="207.537,-472.606!"];
+Castalia [pos="215.56,-458.381!"];
+Castana [pos="210.372,-479.543!"];
+Cedar_Falls [pos="212.639,-462.227!"];
+Cedar_Rapids [pos="210.042,-458.22!"];
+Center_Junction [pos="210.581,-455.435!"];
+Center_Point [pos="210.954,-458.926!"];
+Centerville [pos="203.671,-464.37!"];
+Central_City [pos="211.019,-457.62!"];
+Centralia [pos="212.361,-454.185!"];
+Chapin [pos="214.168,-466.111!"];
+Chariton [pos="205.069,-466.533!"];
+Charles_City [pos="215.332,-463.362!"];
+Charlotte [pos="209.802,-452.326!"];
+Charter_Oak [pos="210.342,-477.958!"];
+Chatsworth [pos="214.581,-482.582!"];
+Chelsea [pos="209.596,-461.973!"];
+Cherokee [pos="213.747,-477.758!"];
+Chester [pos="217.455,-461.802!"];
+Chillicothe [pos="205.428,-462.647!"];
+Churdan [pos="210.76,-472.372!"];
+Cincinnati [pos="203.154,-464.623!"];
+Clare [pos="212.936,-471.728!"];
+Clarence [pos="209.445,-455.283!"];
+Clarinda [pos="203.71,-475.192!"];
+Clarion [pos="213.658,-468.665!"];
+Clarksville [pos="213.924,-463.338!"];
+Clayton [pos="214.519,-455.737!"];
+Clearfield [pos="204.003,-472.415!"];
+Clear_Lake [pos="215.69,-466.897!"];
+Cleghorn [pos="214.061,-478.564!"];
+Clemons [pos="210.569,-465.78!"];
+Clermont [pos="215.018,-458.262!"];
+Climbing_Hill [pos="211.708,-480.389!"];
+Clinton [pos="209.222,-450.944!"];
+Clio [pos="203.175,-467.257!"];
+Clive [pos="208.066,-468.989!"];
+Clutier [pos="210.397,-462.011!"];
+Coalville [pos="212.226,-470.629!"];
+Coburg [pos="204.587,-476.322!"];
+Coggon [pos="211.404,-457.652!"];
+Coin [pos="203.272,-476.151!"];
+Colesburg [pos="213.197,-456.01!"];
+Colfax [pos="208.389,-466.226!"];
+College_Springs [pos="203.096,-475.604!"];
+Collins [pos="209.514,-466.532!"];
+Colo [pos="210.089,-466.576!"];
+Columbus_City [pos="206.293,-456.872!"];
+Columbus_Junction [pos="206.4,-456.804!"];
+Colwell [pos="215.779,-462.97!"];
+Conesville [pos="206.91,-456.749!"];
+Conrad [pos="211.124,-464.373!"];
+Conroy [pos="208.646,-459.988!"];
+Conway [pos="203.743,-473.094!"];
+Coon_Rapids [pos="209.374,-473.392!"];
+Coppock [pos="205.821,-458.574!"];
+Coralville [pos="208.382,-457.902!"];
+Corley [pos="207.893,-476.651!"];
+Corning [pos="204.95,-473.704!"];
+Correctionville [pos="212.375,-478.928!"];
+Columbus_City -- Columbus_Junction
+Beaman -- Conrad
+Altoona -- Bondurant
+Blue_Grass -- Buffalo
+Arion -- Buck_Grove
+Blanchard -- Coin
+Central_City -- Coggon
+Athelstan -- Blockton
+Afton -- Arispe
+Barnum -- Clare
+Camanche -- Clinton
+Alleman -- Ankeny
+Bancroft -- Burt
+Asbury -- Centralia
+Akron -- Chatsworth
+Beaver -- Berkley
+Braddyville -- College_Springs
+Carbon -- Corning
+Avoca -- Corley
+Columbus_Junction -- Conesville
+Alden -- Buckeye
+Beaverdale -- Burlington
+Brighton -- Coppock
+Blanchard -- College_Springs
+Alburnett -- Central_City
+Castalia -- Clermont
+Allerton -- Clio
+Bolan -- Carpenter
+Alleman -- Cambridge
+Allison -- Bristow
+Aredale -- Bristow
+Coin -- College_Springs
+Centerville -- Cincinnati
+Collins -- Colo
+Arcadia -- Breda
+Belle_Plaine -- Chelsea
+Anthon -- Correctionville
+Charles_City -- Colwell
+Aurelia -- Cherokee
+Auburn -- Breda
+Bassett -- Colwell
+Adair -- Casey
+Bayard -- Coon_Rapids
+Bertram -- Cedar_Rapids
+Burchinal -- Clear_Lake
+Altoona -- Carlisle
+Algona -- Burt
+Bagley -- Bayard
+Bedford -- Conway
+Allison -- Clarksville
+Bankston -- Centralia
+Adair -- Anita
+Agency -- Batavia
+Berkley -- Bouton
+Beaver -- Boxholm
+Arlington -- Aurora
+Alburnett -- Cedar_Rapids
+Alexander -- Belmond
+Bode -- Bradgate
+Amana -- Conroy
+Clearfield -- Conway
+Ankeny -- Bondurant
+Benton -- Blockton
+Clarinda -- College_Springs
+Andover -- Clinton
+Balltown -- Bankston
+Alta -- Aurelia
+Ackworth -- Carlisle
+Bronson -- Climbing_Hill
+Bassett -- Charles_City
+Benton -- Clearfield
+Breda -- Carroll
+Albion -- Conrad
+Bernard -- Centralia
+Chelsea -- Clutier
+Blakesburg -- Chillicothe
+Barnum -- Callender
+Braddyville -- Clarinda
+Ames -- Cambridge
+Belmond -- Clarion
+Atlantic -- Brayton
+Alta_Vista -- Bassett
+Albion -- Clemons
+Balltown -- Centralia
+Bennett -- Clarence
+Asbury -- Balltown
+Badger -- Coalville
+Ackley -- Aplington
+Alburnett -- Center_Point
+Baxter -- Collins
+Cherokee -- Cleghorn
+Alden -- Bradford
+Bernard -- Cascade
+Audubon -- Brayton
+Arion -- Charter_Oak
+Baxter -- Colfax
+Arcadia -- Carroll
+Ainsworth -- Columbus_City
+Alta_Vista -- Colwell
+Albia -- Blakesburg
+Blockton -- Clearfield
+Auburn -- Carroll
+Clemons -- Colo
+Anita -- Brayton
+Callender -- Coalville
+Allison -- Aplington
+Aplington -- Bristow
+Athelstan -- Conway
+Brooklyn -- Chelsea
+Albia -- Bussey
+Belle_Plaine -- Blairstown
+Arcadia -- Aspinwall
+Calumet -- Cherokee
+Amana -- Atkins
+Anamosa -- Center_Junction
+Andrew -- Bellevue
+Blairstown -- Conroy
+Calmar -- Castalia
+Archer -- Ashton
+Badger -- Clare
+Bradford -- Chapin
+Athelstan -- Bedford
+Cascade -- Center_Junction
+Alton -- Boyden
+Ainsworth -- Coppock
+Anderson -- Bartlett
+Atkins -- Center_Point
+Bondurant -- Cambridge
+Ackley -- Bradford
+Algona -- Bode
+Calumet -- Cleghorn
+Andover -- Charlotte
+Beacon -- Bussey
+Anthon -- Climbing_Hill
+Aredale -- Chapin
+Bondurant -- Colfax
+Atkins -- Cedar_Rapids
+Bettendorf -- Buffalo
+Adel -- Clive
+Arispe -- Beaconsfield
+Bankston -- Cascade
+Anita -- Bridgewater
+Cambridge -- Collins
+Blencoe -- Castana
+Ankeny -- Clive
+Bradgate -- Clare
+Barnes_City -- Brooklyn
+Center_Junction -- Clarence
+Birmingham -- Bonaparte
+Andrew -- Charlotte
+Bennett -- Calamus
+Colfax -- Collins
+Adel -- Bouton
+Baldwin -- Bernard
+Burchinal -- Chapin
+Atkins -- Blairstown
+Amana -- Blairstown
+Agency -- Chillicothe
+Beacon -- Chillicothe
+Boone -- Bouton
+Battle_Creek -- Correctionville
+Ashton -- Boyden
+Bentley -- Carson
+Battle_Creek -- Charter_Oak
+Barnum -- Coalville
+Batavia -- Birmingham
+Bridgewater -- Carbon
+Baldwin -- Center_Junction
+Brandon -- Center_Point
+Arthur -- Battle_Creek
+Anita -- Atlantic
+Avoca -- Carson
+Bevington -- Clive
+Boone -- Boxholm
+Bertram -- Central_City
+Arlington -- Clermont
+Bondurant -- Collins
+Alexander -- Chapin
+Atalissa -- Bennett
+Anamosa -- Central_City
+Archer -- Calumet
+Aspinwall -- Buck_Grove
+Berkley -- Boone
+Ames -- Boone
+Andrew -- Baldwin
+Baldwin -- Calamus
+Atalissa -- Conesville
+Birmingham -- Cantril
+Coburg -- Coin
+Boxholm -- Callender
+Agency -- Bloomfield
+Blairsburg -- Clarion
+Carroll -- Coon_Rapids
+Brunsville -- Chatsworth
+Bankston -- Colesburg
+Alden -- Blairsburg
+Clayton -- Colesburg
+Boxholm -- Coalville
+Conway -- Corning
+Camanche -- Charlotte
+Archer -- Boyden
+Bonaparte -- Cantril
+Burr_Oak -- Calmar
+Callender -- Churdan
+Bertram -- Coralville
+California_Junction -- Carter_Lake
+Baldwin -- Cascade
+Armstrong -- Bancroft
+Albia -- Beacon
+Aspinwall -- Audubon
+Charles_City -- Clarksville
+Albert_City -- Ayrshire
+Arispe -- Benton
+Baldwin -- Clarence
+Ackley -- Aredale
+Clarinda -- Coburg
+Bancroft -- Buffalo_Center
+Andrew -- Bernard
+Baxter -- Clemons
+Alexander -- Bradford
+Badger -- Bode
+Alton -- Archer
+Anamosa -- Bertram
+Alta_Vista -- Chester
+Audubon -- Coon_Rapids
+Avoca -- Bentley
+Albia -- Centerville
+Bridgewater -- Casey
+Bellevue -- Charlotte
+Alden -- Alexander
+Arispe -- Clearfield
+Blakesburg -- Bloomfield
+Archer -- Cleghorn
+Ames -- Colo
+Bagley -- Churdan
+Bentley -- Carter_Lake
+Bennett -- Blue_Grass
+Bayard -- Churdan
+Barnes_City -- Beacon
+Ackworth -- Bevington
+Allerton -- Chariton
+Alton -- Brunsville
+Belmond -- Britt
+Amana -- Coralville
+Castana -- Climbing_Hill
+Blue_Grass -- Calamus
+Anthon -- Castana
+Castana -- Charter_Oak
+Bouton -- Clive
+Bedford -- Braddyville
+Birmingham -- Brighton
+Britt -- Buffalo_Center
+Calamus -- Charlotte
+Beaconsfield -- Benton
+Bedford -- Clarinda
+Alexander -- Burchinal
+Carlisle -- Clive
+Andover -- Bellevue
+Bagley -- Berkley
+Blakesburg -- Centerville
+Alvord -- Boyden
+Atlantic -- Avoca
+Cedar_Falls -- Clarksville
+Alta -- Arthur
+Cleghorn -- Correctionville
+Bolan -- Burchinal
+Alton -- Cleghorn
+Buck_Grove -- Corley
+Bayard -- Casey
+Beaver -- Churdan
+Audubon -- Carroll
+Carson -- Coburg
+Albert_City -- Alta
+Anderson -- Coburg
+Aplington -- Conrad
+Alleman -- Boone
+Cherokee -- Correctionville
+Bloomfield -- Cantril
+Batavia -- Cantril
+Bradford -- Bristow
+Alexander -- Blairsburg
+Amana -- Bertram
+Andrew -- Calamus
+Bettendorf -- Camanche
+Ackley -- Conrad
+Conesville -- Coralville
+Buckeye -- Clemons
+Belmond -- Clear_Lake
+Bristow -- Charles_City
+Carbon -- Clarinda
+Adair -- Coon_Rapids
+Blencoe -- California_Junction
+Balltown -- Clayton
+Ackworth -- Colfax
+Aspinwall -- Corley
+Bettendorf -- Calamus
+Ainsworth -- Coralville
+Arcadia -- Arthur
+Ackworth -- Chariton
+Aurora -- Coggon
+Batavia -- Brighton
+Battle_Creek -- Castana
+Alleman -- Bouton
+Atlantic -- Carbon
+Anderson -- Coin
+Carroll -- Churdan
+Arion -- Arthur
+Bronson -- Brunsville
+Adair -- Bagley
+Brayton -- Corley
+Aurora -- Brandon
+Blairstown -- Brandon
+Auburn -- Churdan
+Bentley -- California_Junction
+Asbury -- Bellevue
+Anthon -- Charter_Oak
+Bartlett -- Carter_Lake
+Britt -- Clear_Lake
+Atalissa -- Coralville
+Aurelia -- Battle_Creek
+Badger -- Clarion
+Britt -- Burt
+Aurora -- Center_Point
+Bettendorf -- Charlotte
+Aplington -- Cedar_Falls
+Arnolds_Park -- Ayrshire
+Beaverdale -- Columbus_City
+Beaman -- Clutier
+Ames -- Blairsburg
+Allerton -- Cincinnati
+Brooklyn -- Conroy
+Ackley -- Clemons
+Cedar_Falls -- Clutier
+Ames -- Buckeye
+Carbon -- Coburg
+Brandon -- Clutier
+Bussey -- Chariton
+Audubon -- Avoca
+Adel -- Bagley
+Anderson -- Carson
+Ayrshire -- Bradgate
+Alvord -- Chatsworth
+Bridgewater -- Clearfield
+Arlington -- Colesburg
+Blairsburg -- Boone
+Bertram -- Clarence
+Blairsburg -- Coalville
+Coggon -- Colesburg
+Beaman -- Cedar_Falls
+Carpenter -- Charles_City
+Brandon -- Cedar_Falls
+Burr_Oak -- Chester
+Armstrong -- Ayrshire
+Clayton -- Clermont
+Adel -- Casey
+Centerville -- Chariton
+Afton -- Bridgewater
+Bartlett -- Bentley
+Bloomfield -- Cincinnati
+Afton -- Bevington
+Albert_City -- Bradgate
+Albert_City -- Auburn
+Agency -- Barnes_City
+Anamosa -- Colesburg
+Bode -- Britt
+Bassett -- Cedar_Falls
+Akron -- Bronson
+Afton -- Corning
+Atlantic -- Coburg
+Anamosa -- Atalissa
+Aredale -- Bolan
+Alta_Vista -- Calmar
+Auburn -- Barnum
+Afton -- Casey
+Brighton -- Conroy
+Alta -- Breda
+Brunsville -- Correctionville
+Badger -- Britt
+Armstrong -- Bradgate
+Bussey -- Colfax
+Arnolds_Park -- Calumet
+Algona -- Clarion
+Burchinal -- Charles_City
+Beaverdale -- Bonaparte
+Adel -- Afton
+Beaconsfield -- Clio
+Buffalo -- Conesville
+Armstrong -- Arnolds_Park
+California_Junction -- Charter_Oak
+Carpenter -- Chester
+Albion -- Brooklyn
+Arnolds_Park -- Ashton
+Bussey -- Carlisle
+Bentley -- Charter_Oak
+Bonaparte -- Columbus_City
+Baxter -- Brooklyn
+Alta -- Arnolds_Park
+Ayrshire -- Calumet
+Barnes_City -- Brighton
+Bridgewater -- Carson
+Buffalo -- Burlington
+Aurora -- Cascade
+Barnes_City -- Colfax
+Bevington -- Clio
+Ackworth -- Beaconsfield
+Bolan -- Buffalo_Center
+Chillicothe -- Conroy
+Calmar -- Cedar_Falls
+Alta_Vista -- Aurora
+Beacon -- Beaman
+}
